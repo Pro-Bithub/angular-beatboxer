@@ -1,0 +1,181 @@
+<div class="text-center">
+  <h1
+    style="
+      padding: 15px 0px;
+      background: #af0707;
+      color: white;
+      text-align: center;
+      padding-bottom: 20px;
+      padding-top: 20px;
+      border-width: 5px;
+      border-radius: 50px;
+    "
+  >
+    <strong> Beatbox Events From Around the World</strong>
+  </h1>
+</div>
+
+<div
+  class="row"
+  style="padding: 6px 183px"
+  *ngIf="events$ | async as infoevents; else loading"
+>
+  <ul *ngFor="let event of infoevents" class="col col-lg-4">
+    <li>
+      {{ event.title }}
+    </li>
+  </ul>
+</div>
+<ng-template #loading> loading ... </ng-template>
+<div style="padding: 6px 183px">
+  <div class="text-center">
+    <h2>
+      <strong> Register Your Event </strong>
+    </h2>
+  </div>
+  <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Name (required)</label>
+        <input
+          type="text"
+          formControlName="name"
+          class="form-control"
+          id="inputEmail4"
+        />
+
+        <div
+          *ngIf="submitted && f.name.errors"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          <div *ngIf="f.name.errors.required">name required</div>
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Email (required)</label>
+        <input
+          type="email"
+          formControlName="email"
+          class="form-control"
+          id="inputEmail4"
+        />
+        <div
+          *ngIf="submitted && f.email.errors"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          <div *ngIf="f.email.errors.required">email required</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputAddress"> Event Name (required)</label>
+        <input
+          type="text"
+          formControlName="event"
+          class="form-control"
+          id="inputAddress"
+        />
+        <div
+          *ngIf="submitted && f.event.errors"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          <div *ngIf="f.event.errors.required">event required</div>
+        </div>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="inputAddress"> date (required)</label>
+        <input
+          type="date"
+          formControlName="date"
+          class="form-control"
+          id="inputAddress"
+        />
+        <div
+          *ngIf="submitted && f.date.errors"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          <div *ngIf="f.date.errors.required">date required</div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="form-group">
+      <label for="inputAddress2">City (required)</label>
+      <input
+        type="text"
+        class="form-control"
+        id="inputAddress2"
+        placeholder="Sousse, Nabile, or Monastir"
+      />
+    </div> -->
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputCity">City (required)</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputCity"
+          formControlName="city"
+          placeholder="Sousse, Nabile, or Monastir"
+        />
+        <div
+          *ngIf="submitted && f.city.errors"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          <div *ngIf="f.city.errors.required">city required</div>
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputState">Country (required)</label>
+        <input
+          type="text"
+          formControlName="country"
+          class="form-control"
+          id="inputCity"
+          placeholder=""
+        />
+
+        <div
+          *ngIf="submitted && f.country.errors"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          <div *ngIf="f.country.errors.required">country required</div>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Send</button>
+  </form>
+</div>

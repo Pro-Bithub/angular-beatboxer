@@ -1,0 +1,23 @@
+<div class="text-center">
+  <h1 style="padding: 15px 0px"><strong> BEATBOX VIDEOS</strong></h1>
+</div>
+
+<div class="row" *ngIf="videos$ | async as infovideos; else loading">
+  <div *ngFor="let video of infovideos" class="col col-lg-4">
+    <iframe
+      title="YouTube video player"
+      class="youtube-player"
+      type="text/html"
+      width="350"
+      height="250"
+      frameborder="0"
+      allowFullScreen
+      [src]="video.url | safe"
+    ></iframe>
+    <h2>
+      {{ video.title }}
+    </h2>
+    <p>{{ video.desc }}</p>
+  </div>
+</div>
+<ng-template #loading> <loading></loading> </ng-template>

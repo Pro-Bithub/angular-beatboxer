@@ -1,0 +1,120 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">Create Account</div>
+
+    <!-- Login Form -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <input
+        type="text"
+        id="login"
+        class="fadeIn second"
+        placeholder="Full name"
+        formControlName="name"
+      />
+      <div *ngIf="submitted && f.name.errors">
+        <div
+          *ngIf="f.name.errors.required"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          name (required)
+        </div>
+      </div>
+
+      <input
+        type="text"
+        id="login"
+        class="fadeIn second"
+        placeholder="Mail"
+        formControlName="mail"
+      />
+      <div *ngIf="submitted && f.mail.errors">
+        <div
+          *ngIf="f.mail.errors.required"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          mail (required)
+        </div>
+      </div>
+
+      <input
+        type="text"
+        id="login"
+        class="fadeIn second"
+        placeholder="login"
+        formControlName="username"
+      />
+      <div *ngIf="submitted && f.username.errors">
+        <div
+          *ngIf="f.username.errors.required"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          username (required)
+        </div>
+      </div>
+
+      <input
+        type="text"
+        id="password"
+        class="fadeIn third"
+        formControlName="password"
+        placeholder="password"
+      />
+      <div *ngIf="submitted && f.password.errors">
+        <div
+          *ngIf="f.password.errors.required"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          password (required)
+        </div>
+      </div>
+
+      <input
+        type="text"
+        id="password"
+        class="fadeIn third"
+        formControlName="password"
+        placeholder="confirm password"
+      />
+      <div *ngIf="submitted && f.password.errors">
+        <div
+          *ngIf="f.password.errors.required"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          password (required)
+        </div>
+      </div>
+
+      <input type="submit" class="fadeIn fourth" value="Create Account" />
+    </form>
+
+    <!-- Remind Passowrd -->
+  </div>
+</div>

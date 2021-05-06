@@ -1,0 +1,73 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">Add video or imge</div>
+
+    <!-- Login Form -->
+    <form [formGroup]="addform" (ngSubmit)="onSubmit()">
+      <input
+        style="display: none"
+        type="file"
+        (change)="onFileChanged($event)"
+        #fileInput
+      />
+      <button
+        class="btn btn-primary"
+        style="background-color: #56baed !important"
+        (click)="fileInput.click()"
+      >
+        Select img or video
+      </button>
+
+      <input
+        type="text"
+        id="login"
+        class="fadeIn second"
+        placeholder="title video"
+        formControlName="title"
+      />
+      <div *ngIf="submitted && f.title.errors">
+        <div
+          *ngIf="f.title.errors.required"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          title (required)
+        </div>
+      </div>
+
+      <textarea
+        class="form-control"
+        id="login"
+        placeholder="description"
+        formControlName="desc"
+        style="text-align: center"
+        rows="5"
+      ></textarea>
+
+      <div *ngIf="submitted && f.desc.errors">
+        <div
+          *ngIf="f.desc.errors.required"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          desc (required)
+        </div>
+      </div>
+
+      <input type="submit" class="fadeIn fourth" value="Add video or imge" />
+    </form>
+
+    <!-- Remind Passowrd -->
+  </div>
+</div>

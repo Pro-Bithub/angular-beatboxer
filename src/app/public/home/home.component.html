@@ -1,0 +1,32 @@
+<div
+  id="b2"
+  style="
+    background: no-repeat url(../../../assets/img/b2.jpg);
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    min-height: 1000px;
+  "
+>
+  <!-- Site Layout -->
+  <!-- Top Navigation -->
+  <app-topnavbar></app-topnavbar>
+  <app-lefmenu></app-lefmenu>
+
+  <!-- content -->
+
+  <div
+    id="main"
+    role="main"
+    style="background: #edededc7 !important; padding: 46px 30px"
+  >
+    <router-outlet></router-outlet>
+  </div>
+
+  <app-footer></app-footer>
+</div>

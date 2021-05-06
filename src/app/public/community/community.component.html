@@ -1,0 +1,31 @@
+<div class="text-center">
+  <h1 style="padding: 15px 0px">
+    <strong> BEATBOX Community</strong>
+    <img
+      src="../../../../assets/img/b3.png"
+      alt=""
+      style="padding-left: 104px"
+    />
+  </h1>
+</div>
+
+<div class="row" *ngIf="Communitys$ | async as infoCommunity; else loading">
+  <a
+    [routerLink]="'/community/profile/' + Community.id"
+    style="color: black"
+    *ngFor="let Community of infoCommunity"
+    class="col col-lg-2"
+  >
+    <img
+      [src]="Community.urlphoto"
+      alt=""
+      style="border-radius: 22px; border: 8px solid white; width: 89px"
+    />
+
+    <h5>
+      {{ Community.name }}
+    </h5>
+    <p>{{ Community.date }}</p>
+  </a>
+</div>
+<ng-template #loading> <loading></loading> </ng-template>
