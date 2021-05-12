@@ -1,117 +1,128 @@
-<!-- Navbar navbar-light -->
-<nav class="navbar navbar-expand-lg bg-dark">
-  <!-- Container wrapper bg-light -->
-  <div class="container-fluid">
-    <!-- Navbar brand -->
-    <img src="../../../../assets/img/b3.png" alt="" />
-    <!--     <a class="navbar-brand" href="#">BeatBoxer</a> -->
-
-    <!-- Toggle button -->
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-mdb-toggle="collapse"
-      data-mdb-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <i class="fas fa-bars"></i>
-    </button>
-
-    <!-- Collapsible wrapper -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <!-- Left links -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a
-            class="nav-link active"
-            aria-current="page"
-            routerLink="/gear_reviews"
-            >HUMAN BEATBOX</a
-          >
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/videos"
-            >Videos</a
-          >
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/lessons"
-            >Learn to Beatbox</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/events"
-            >Events</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/community"
-            >Community</a
-          >
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/login"
-            >Login</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/register"
-            >Register</a
-          >
-        </li>
-
-        <!--      <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li> -->
-        <!-- Navbar dropdown -->
-        <!--  <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="navbarDropdown"
-            role="button"
-            data-mdb-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Dropdown
-          </a>
-   
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <li>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </li>
-          </ul>
-        </li> -->
-      </ul>
-      <!-- Left links -->
-
-      <!-- Search form -->
-      <!--    <form class="d-flex input-group w-auto">
-        <input
-          type="search"
-          class="form-control"
-          placeholder="Search"
-          aria-label="Search"
+<!-- Navbar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid justify-content-between">
+    <div class="d-flex">
+      <!-- <a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="#">
+        <img
+          src="../../../../assets/img/b3.png"
+          height="20"
+          alt=""
+          loading="lazy"
+          style="margin-top: 2px"
         />
-        <button
-          class="btn btn-outline-primary"
-          type="button"
-          data-mdb-ripple-color="dark"
-        >
-          Search
-        </button>
-      </form> -->
+      </a> -->
     </div>
-    <!-- Collapsible wrapper -->
+    <!-- Left elements -->
+
+    <!-- Center elements -->
+    <!--    <ul class="navbar-nav flex-row d-none d-md-flex">
+      <li class="nav-item me-3 me-lg-1 active">
+        <a class="nav-link" href="#">
+          <span><i class="fas fa-home fa-lg"></i></span>
+          <span class="badge rounded-pill badge-notification bg-danger">1</span>
+        </a>
+      </li>
+    </ul> -->
+    <!-- Center elements -->
+
+    <!-- Right elements -->
+    <ul class="navbar-nav flex-row">
+      <li class="nav-item me-3 me-lg-1">
+        <a
+          class="nav-link d-sm-flex align-items-sm-center"
+          routerLink="/gear_reviews"
+        >
+          <img
+            src="../../../../assets/img/image1.png"
+            class="rounded-circle"
+            height="22"
+            alt=""
+            style="width: 33px"
+            loading="lazy"
+          />
+          <strong class="text-shadow d-none d-sm-block ms-1"
+            >HUMAN BEATBOX</strong
+          >
+        </a>
+      </li>
+      <li class="nav-item me-3 me-lg-1">
+        <a
+          class="nav-link d-sm-flex align-items-sm-center"
+          routerLink="/videos"
+        >
+          <img
+            src="../../../../assets/img/image2.png"
+            class="rounded-circle"
+            height="22"
+            alt=""
+            loading="lazy"
+          />
+          <strong class="text-shadow d-none d-sm-block ms-1">Videos</strong>
+        </a>
+      </li>
+      <li class="nav-item me-3 me-lg-1">
+        <a
+          class="nav-link d-sm-flex align-items-sm-center"
+          routerLink="/lessons"
+        >
+          <img
+            src="../../../../assets/img/img11.jpg"
+            class="rounded-circle"
+            height="22"
+            alt=""
+            loading="lazy"
+          />
+
+          <strong class="text-shadow d-none d-sm-block ms-1"
+            >Learn to Beatbox</strong
+          >
+        </a>
+      </li>
+      <li class="nav-item me-3 me-lg-1">
+        <a
+          class="nav-link d-sm-flex align-items-sm-center"
+          routerLink="/events"
+        >
+          <img
+            src="../../../../assets/img/image4.png"
+            class="rounded-circle"
+            height="22"
+            alt=""
+            loading="lazy"
+          />
+          <strong class="text-shadow d-none d-sm-block ms-1">Events</strong>
+        </a>
+      </li>
+      <li class="nav-item me-3 me-lg-1">
+        <a
+          class="nav-link d-sm-flex align-items-sm-center"
+          routerLink="/community"
+        >
+          <img
+            src="../../../../assets/img/image3.png"
+            class="rounded-circle"
+            height="22"
+            alt=""
+            loading="lazy"
+          />
+          <strong class="text-shadow d-none d-sm-block ms-1">Community</strong>
+        </a>
+      </li>
+      <li class="nav-item me-3 me-lg-1">
+        <a class="nav-link d-sm-flex align-items-sm-center" routerLink="/login">
+          <strong class="text-shadow d-none d-sm-block ms-1">Login</strong>
+        </a>
+      </li>
+      <li class="nav-item me-3 me-lg-1">
+        <a
+          class="nav-link d-sm-flex align-items-sm-center"
+          routerLink="/register"
+        >
+          <strong class="text-shadow d-none d-sm-block ms-1">Register</strong>
+        </a>
+      </li>
+    </ul>
+    <!-- Right elements -->
   </div>
-  <!-- Container wrapper -->
 </nav>
 <!-- Navbar -->

@@ -32,6 +32,49 @@
         type="text"
         id="login"
         class="fadeIn second"
+        placeholder="Phone"
+        formControlName="phone"
+      />
+      <div *ngIf="submitted && f.phone.errors">
+        <div
+          *ngIf="f.phone.errors.required"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          Phone (required)
+        </div>
+      </div>
+
+      <!--  <input
+    type="text"
+    id="login"
+    class="fadeIn second"
+    placeholder="Phone"
+    formControlName="name"
+  />
+  <div *ngIf="submitted && f.name.errors">
+    <div
+      *ngIf="f.name.errors.required"
+      style="
+        width: 100%;
+        margin-top: 0.25rem;
+        font-size: 80%;
+        color: #dc3545;
+      "
+    >
+    Phone (required)
+    </div>
+  </div>
+ -->
+
+      <input
+        type="text"
+        id="login"
+        class="fadeIn second"
         placeholder="Mail"
         formControlName="mail"
       />

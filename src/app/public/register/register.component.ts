@@ -37,31 +37,13 @@ export class RegisterComponent implements OnInit {
 		this.loginForm = this.formBuilder.group({
 			name: [ , Validators.required ],
 			mail: [ , Validators.required ],
+
+			phone: [ , Validators.required ],
 			username: [ , Validators.required ],
 			password: [ , Validators.required ]
 		});
 	}
-	loginwithfinger() {
-		this.buttonDisabled = true;
-		this.checkAdminObs$ = this.loginService.loginwithfinger().pipe(
-			catchError((error) => {
-				//it's important that we log an error here.
-				//Otherwise you won't see an error in the console.
-				console.error('error loading the list of users', error);
-				this.loadingError$.next(true);
-				return of();
-			})
-		);
-		/*  this.checkuserObs$.subscribe(data => console.log(data)); */
-	}
-	loginwithoutfinger() {
-		if (this.loginForm.invalid) {
-			this.errorMessage = 'Requird Data.';
-			return;
-		}
-		this.buttonDisabled = true;
-		this.checkAdminwithoutfingerObs$ = this.loginService.loginwithoutfinger(this.loginForm.value);
-	}
+
 	GoPageAdminRout(info) {
 		this.router.navigate([ '/profile-Employser' ]);
 		return true;

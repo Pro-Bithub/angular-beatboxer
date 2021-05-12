@@ -1,23 +1,54 @@
 <div class="text-center">
   <h1 style="padding: 15px 0px"><strong> BEATBOX VIDEOS</strong></h1>
 </div>
+<div class="">
+  <div class="main-body">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="main-breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a routerLink="/gear_reviews">Home</a>
+        </li>
 
+        <li class="breadcrumb-item active" aria-current="page">videos</li>
+      </ol>
+    </nav>
+  </div>
+</div>
 <div class="row" *ngIf="videos$ | async as infovideos; else loading">
-  <div *ngFor="let video of infovideos" class="col col-lg-4">
-    <iframe
-      title="YouTube video player"
-      class="youtube-player"
-      type="text/html"
-      width="350"
-      height="250"
-      frameborder="0"
-      allowFullScreen
-      [src]="video.url | safe"
-    ></iframe>
-    <h2>
-      {{ video.title }}
-    </h2>
-    <p>{{ video.desc }}</p>
+  <div class="">
+    <div class="main-body">
+      <div class="row gutters-sm">
+        <div class="col-md-12">
+          <div class="row">
+            <div *ngFor="let video of infovideos" class="col col-lg-6">
+              <div class="row">
+                <div class="card-body col col-lg-6">
+                  <iframe
+                    style="padding: 13px"
+                    title="YouTube video player"
+                    class="youtube-player"
+                    type="text/html"
+                    width="310"
+                    height="200"
+                    frameborder="0"
+                    allowFullScreen
+                    [src]="video.url | safe"
+                  ></iframe>
+                </div>
+                <div class="col col-lg-6">
+                  <h2>
+                    {{ video.title }}
+                  </h2>
+                  <p>{{ video.desc }}</p>
+                  <a href=""> READ MORE</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <ng-template #loading> <loading></loading> </ng-template>
