@@ -1,5 +1,5 @@
 export class videos {
-  url: string;
-  title: string;
-  desc: string;
+	url: string;
+	title: string;
+	desc: string;
 }

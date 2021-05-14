@@ -26,7 +26,7 @@
     </li>
   </ul>
 </div>
-<ng-template #loading> loading ... </ng-template>
+<ng-template #loading> <loading></loading> </ng-template>
 <div style="padding: 6px 183px">
   <div class="text-center">
     <h2>
@@ -179,3 +179,8 @@
     <button type="submit" class="btn btn-primary">Send</button>
   </form>
 </div>
+
+<div *ngIf="checksendeventObs$ | async as infos; else loading2">
+  {{ infos }}
+</div>
+<ng-template #loading2> <loading></loading> </ng-template>
