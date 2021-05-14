@@ -156,7 +156,7 @@ export class AdminService {
 	}
 
 	Getevents(): Observable<Events[]> {
-		this.addEvents({
+		/* 	this.addEvents({
 			title: '2021 Austrian Beatbox Championships'
 		});
 
@@ -226,8 +226,28 @@ export class AdminService {
 			title: '2021 CrossRoads Beatbox Battle'
 		});
 
-		return this._observableList_events;
-		// return this.http.get<any>(AppSettings.App_URL + "/getAllVideos");
+		return this._observableList_events; */
+		return this.http.get<any>(AppSettings.App_URL + '/events');
+	}
+
+	send_event_req(data: any): Observable<string> {
+		let parm = {
+			name: data.name,
+			email: data.email,
+			eventname: data.eventname,
+			date: data.date,
+			city: data.city,
+			country: data.country
+		};
+
+		/*     let EmprintAdmin = { 'fingerPrint': hashcode } */
+		return this.http.post<string>(AppSettings.App_URL + '/req-events', parm, {
+			headers: new HttpHeaders({
+				Authorization: '{data}',
+				'Content-Type': 'application/json'
+			}),
+			responseType: 'text' as 'json'
+		});
 	}
 
 	GetUserBYid(id): Observable<User> {
@@ -244,7 +264,7 @@ export class AdminService {
 		return this.GetVideos();
 	}
 	GetVideos(): Observable<videos[]> {
-		for (let index = 0; index < 10; index++) {
+		/* 		for (let index = 0; index < 10; index++) {
 			this.add({
 				url: 'http://www.youtube.com/embed/7lqXobo6eEA',
 				title: 'title' + index,
@@ -253,8 +273,8 @@ export class AdminService {
 					index
 			});
 		}
-		return this._observableList;
-		// return this.http.get<any>(AppSettings.App_URL + "/getAllVideos");
+		return this._observableList; */
+		return this.http.get<any>(AppSettings.App_URL + '/videos');
 	}
 
 	checkadmin() {
