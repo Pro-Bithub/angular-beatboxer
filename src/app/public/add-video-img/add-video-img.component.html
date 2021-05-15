@@ -7,7 +7,7 @@
 
     <!-- Login Form -->
     <form [formGroup]="addform" (ngSubmit)="onSubmit()">
-      <input
+      <!--  <input
         style="display: none"
         type="file"
         (change)="onFileChanged($event)"
@@ -19,7 +19,28 @@
         (click)="fileInput.click()"
       >
         Select img or video
-      </button>
+      </button> -->
+
+      <input
+        type="text"
+        id="login"
+        class="fadeIn second"
+        placeholder="url video youtube"
+        formControlName="url"
+      />
+      <div *ngIf="submitted && f.url.errors">
+        <div
+          *ngIf="f.url.errors.required"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          url video (required)
+        </div>
+      </div>
 
       <input
         type="text"
@@ -41,7 +62,26 @@
           title (required)
         </div>
       </div>
-
+      <input
+        type="text"
+        id="login"
+        class="fadeIn second"
+        placeholder="type video"
+        formControlName="type"
+      />
+      <div *ngIf="submitted && f.type.errors">
+        <div
+          *ngIf="f.type.errors.required"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          type (required)
+        </div>
+      </div>
       <textarea
         class="form-control"
         id="login"
@@ -71,3 +111,7 @@
     <!-- Remind Passowrd -->
   </div>
 </div>
+<notifyalsert
+  *ngIf="(notify | json) != '{}' && notify != null"
+  [notify]="notify"
+></notifyalsert>

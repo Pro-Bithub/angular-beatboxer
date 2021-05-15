@@ -10,6 +10,7 @@ import { CommunityComponent } from './community/community.component';
 import { ProfileCommunityComponent } from './profile-community/profile-community.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { AddVideoImgComponent } from './add-video-img/add-video-img.component';
+import { EditerProfileComponent } from './editer-profile/editer-profile.component';
 
 export const componen1: any[] = [
 	PageNotFoundComponent,
@@ -23,8 +24,10 @@ export const componen1: any[] = [
 	CommunityComponent,
 	ProfileCommunityComponent,
 	MyProfileComponent,
-	AddVideoImgComponent
+	AddVideoImgComponent,
+	EditerProfileComponent
 ];
+export * from './editer-profile/editer-profile.component';
 export * from './add-video-img/add-video-img.component';
 export * from './my-profile/my-profile.component';
 export * from './profile-community/profile-community.component';

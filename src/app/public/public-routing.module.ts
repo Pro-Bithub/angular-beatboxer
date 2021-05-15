@@ -11,6 +11,8 @@ import { CommunityComponent } from './community/community.component';
 import { ProfileCommunityComponent } from './profile-community/profile-community.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { AddVideoImgComponent } from './add-video-img/add-video-img.component';
+import { AuthGuard } from '../core/_helpers/auth.guard';
+import { EditerProfileComponent } from './editer-profile/editer-profile.component';
 
 const routes: Routes = [
 	{
@@ -23,9 +25,21 @@ const routes: Routes = [
 			{ path: 'events', component: EventsComponent },
 			{ path: 'community', component: CommunityComponent },
 			{ path: 'community/profile/:id', component: ProfileCommunityComponent },
-			{ path: 'my-profile', component: MyProfileComponent },
-			{ path: 'add-video-img', component: AddVideoImgComponent },
-
+			{
+				path: 'my-profile',
+				component: MyProfileComponent,
+				canActivate: [ AuthGuard ]
+			},
+			{
+				path: 'add-video-img',
+				component: AddVideoImgComponent,
+				canActivate: [ AuthGuard ]
+			},
+			{
+				path: 'editer-profile',
+				component: EditerProfileComponent,
+				canActivate: [ AuthGuard ]
+			},
 			{ path: 'register', component: RegisterComponent },
 			{ path: 'login', component: LoginComponent }
 		]

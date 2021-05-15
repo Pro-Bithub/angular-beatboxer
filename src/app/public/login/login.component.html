@@ -58,3 +58,8 @@
     </div>
   </div>
 </div>
+
+<notifyalsert
+  *ngIf="(notify | json) != '{}' && notify != null"
+  [notify]="notify"
+></notifyalsert>

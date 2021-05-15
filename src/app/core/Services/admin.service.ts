@@ -13,7 +13,18 @@ import { User } from '../model/user';
 	providedIn: 'root'
 })
 export class AdminService {
+	/* */
 	constructor(private http: HttpClient) {}
+	/**
+   * Show a notification
+   *
+   * @param {string} type    Notification type
+   * @param {string} message Notification message
+   */
+	public showNotification(type: string, message: string): void {
+		/* this.notifierService.notify(type, message); */
+	}
+
 	private _list: videos[] = [];
 	private _observableList: BehaviorSubject<videos[]> = new BehaviorSubject([]);
 	private _list_events: Events[] = [];
@@ -47,112 +58,112 @@ export class AdminService {
 	}
 
 	GetCommunity(): Observable<Community[]> {
-		this.addEventsCommunity({
-			id: '1',
-			urlphoto: '../../../../assets/img/p1.jpg',
-			name: 'Reynard Johnson',
-			date: '2020-01-30'
-		});
-		this.addEventsCommunity({
-			id: '1',
-			urlphoto: '../../../../assets/img/p2.jpg',
-			name: 'Tasha Gross',
-			date: '2020-02-30'
-		});
+		return this.http.get<any>(AppSettings.App_URL + '/users');
+		/*  this.addEventsCommunity({
+      id: "1",
+      urlphoto: "../../../../assets/img/p1.jpg",
+      name: "Reynard Johnson",
+      date: "2020-01-30",
+    });
+    this.addEventsCommunity({
+      id: "1",
+      urlphoto: "../../../../assets/img/p2.jpg",
+      name: "Tasha Gross",
+      date: "2020-02-30",
+    });
 
-		this.addEventsCommunity({
-			id: '1',
-			urlphoto: '../../../../assets/img/p3.jpg',
-			name: 'Naomi Ramos',
-			date: '2020-04-30'
-		});
+    this.addEventsCommunity({
+      id: "1",
+      urlphoto: "../../../../assets/img/p3.jpg",
+      name: "Naomi Ramos",
+      date: "2020-04-30",
+    });
 
-		this.addEventsCommunity({
-			id: '1',
-			urlphoto: '../../../../assets/img/p4.jpg',
-			name: 'Laurel Fraley',
-			date: '2020-04-30'
-		});
-		this.addEventsCommunity({
-			id: '1',
-			urlphoto: '../../../../assets/img/p1.jpg',
-			name: 'Reynard Johnson',
-			date: '2020-01-30'
-		});
-		this.addEventsCommunity({
-			id: '1',
-			urlphoto: '../../../../assets/img/p2.jpg',
-			name: 'Tasha Gross',
-			date: '2020-02-30'
-		});
+    this.addEventsCommunity({
+      id: "1",
+      urlphoto: "../../../../assets/img/p4.jpg",
+      name: "Laurel Fraley",
+      date: "2020-04-30",
+    });
+    this.addEventsCommunity({
+      id: "1",
+      urlphoto: "../../../../assets/img/p1.jpg",
+      name: "Reynard Johnson",
+      date: "2020-01-30",
+    });
+    this.addEventsCommunity({
+      id: "1",
+      urlphoto: "../../../../assets/img/p2.jpg",
+      name: "Tasha Gross",
+      date: "2020-02-30",
+    });
 
-		this.addEventsCommunity({
-			id: '1',
-			urlphoto: '../../../../assets/img/p3.jpg',
-			name: 'Naomi Ramos',
-			date: '2020-04-30'
-		});
+    this.addEventsCommunity({
+      id: "1",
+      urlphoto: "../../../../assets/img/p3.jpg",
+      name: "Naomi Ramos",
+      date: "2020-04-30",
+    });
 
-		this.addEventsCommunity({
-			id: '1',
-			urlphoto: '../../../../assets/img/p4.jpg',
-			name: 'Laurel Fraley',
-			date: '2020-04-30'
-		});
-		this.addEventsCommunity({
-			id: '1',
-			urlphoto: '../../../../assets/img/p1.jpg',
-			name: 'Reynard Johnson',
-			date: '2020-01-30'
-		});
-		this.addEventsCommunity({
-			id: '1',
-			urlphoto: '../../../../assets/img/p2.jpg',
-			name: 'Tasha Gross',
-			date: '2020-02-30'
-		});
+    this.addEventsCommunity({
+      id: "1",
+      urlphoto: "../../../../assets/img/p4.jpg",
+      name: "Laurel Fraley",
+      date: "2020-04-30",
+    });
+    this.addEventsCommunity({
+      id: "1",
+      urlphoto: "../../../../assets/img/p1.jpg",
+      name: "Reynard Johnson",
+      date: "2020-01-30",
+    });
+    this.addEventsCommunity({
+      id: "1",
+      urlphoto: "../../../../assets/img/p2.jpg",
+      name: "Tasha Gross",
+      date: "2020-02-30",
+    });
 
-		this.addEventsCommunity({
-			id: '1',
-			urlphoto: '../../../../assets/img/p3.jpg',
-			name: 'Naomi Ramos',
-			date: '2020-04-30'
-		});
+    this.addEventsCommunity({
+      id: "1",
+      urlphoto: "../../../../assets/img/p3.jpg",
+      name: "Naomi Ramos",
+      date: "2020-04-30",
+    });
 
-		this.addEventsCommunity({
-			id: '1',
-			urlphoto: '../../../../assets/img/p4.jpg',
-			name: 'Laurel Fraley',
-			date: '2020-04-30'
-		});
-		this.addEventsCommunity({
-			id: '1',
-			urlphoto: '../../../../assets/img/p1.jpg',
-			name: 'Reynard Johnson',
-			date: '2020-01-30'
-		});
-		this.addEventsCommunity({
-			id: '1',
-			urlphoto: '../../../../assets/img/p2.jpg',
-			name: 'Tasha Gross',
-			date: '2020-02-30'
-		});
+    this.addEventsCommunity({
+      id: "1",
+      urlphoto: "../../../../assets/img/p4.jpg",
+      name: "Laurel Fraley",
+      date: "2020-04-30",
+    });
+    this.addEventsCommunity({
+      id: "1",
+      urlphoto: "../../../../assets/img/p1.jpg",
+      name: "Reynard Johnson",
+      date: "2020-01-30",
+    });
+    this.addEventsCommunity({
+      id: "1",
+      urlphoto: "../../../../assets/img/p2.jpg",
+      name: "Tasha Gross",
+      date: "2020-02-30",
+    });
 
-		this.addEventsCommunity({
-			id: '1',
-			urlphoto: '../../../../assets/img/p3.jpg',
-			name: 'Naomi Ramos',
-			date: '2020-04-30'
-		});
+    this.addEventsCommunity({
+      id: "1",
+      urlphoto: "../../../../assets/img/p3.jpg",
+      name: "Naomi Ramos",
+      date: "2020-04-30",
+    });
 
-		this.addEventsCommunity({
-			id: '1',
-			urlphoto: '../../../../assets/img/p4.jpg',
-			name: 'Laurel Fraley',
-			date: '2020-04-30'
-		});
-
-		return this._observableList_Community;
+    this.addEventsCommunity({
+      id: "1",
+      urlphoto: "../../../../assets/img/p4.jpg",
+      name: "Laurel Fraley",
+      date: "2020-04-30",
+    });
+  return this._observableList_Community; */
 	}
 
 	Getevents(): Observable<Events[]> {
@@ -250,18 +261,90 @@ export class AdminService {
 		});
 	}
 
-	GetUserBYid(id): Observable<User> {
-		return of({
-			id: '1',
-			urlphoto: '../../../../assets/img/p1.jpg',
-			name: 'Reynard Johnson',
-			date: '2020-01-30'
-		});
+	register(data: any): Observable<string> {
+		let parm = {
+			name: data.name,
+			email: data.email,
+			phone: data.phone,
+			username: data.username,
+			password: data.password,
+			repassword: data.repassword
+		};
 
+		/*     let EmprintAdmin = { 'fingerPrint': hashcode } */
+		return this.http.post<string>(AppSettings.App_URL + '/users', parm, {
+			headers: new HttpHeaders({
+				Authorization: '{data}',
+				'Content-Type': 'application/json'
+			}),
+			responseType: 'text' as 'json'
+		});
+	}
+
+	findOneByUserNameAndpwd(data: any): Observable<string> {
+		let parm = {
+			username: data.username,
+			password: data.password
+		};
+
+		/*     let EmprintAdmin = { 'fingerPrint': hashcode } */
+		return this.http.post<string>(AppSettings.App_URL + '/users/ByUserNameAndpwd', parm);
+	}
+
+	editerprofile(data: any): Observable<string> {
+		let parm = {
+			email: data.email,
+			name: data.name,
+			username: data.username,
+			password: data.password,
+			phone: data.phone,
+			address: data.address,
+			description: data.description
+		};
+
+		/*     let EmprintAdmin = { 'fingerPrint': hashcode } */
+		return this.http.put<string>(AppSettings.App_URL + '/users/' + data.id, parm, {
+			headers: new HttpHeaders({
+				Authorization: '{data}',
+				'Content-Type': 'application/json'
+			}),
+			responseType: 'text' as 'json'
+		});
+	}
+
+	addvideo(data: any): Observable<string> {
+		let parm = {
+			url: data.url,
+			title: data.title,
+			desc: data.desc,
+			type: data.type
+		};
+
+		/*     let EmprintAdmin = { 'fingerPrint': hashcode } */
+		return this.http.post<string>(AppSettings.App_URL + '/videos', parm, {
+			headers: new HttpHeaders({
+				Authorization: '{data}',
+				'Content-Type': 'application/json'
+			}),
+			responseType: 'text' as 'json'
+		});
+	}
+	GetUserBYid(id): Observable<User> {
+		/*     return of({
+      id: "1",
+      urlphoto: "../../../../assets/img/p1.jpg",
+      name: "Reynard Johnson",
+      createdAt: "2020-01-30",
+    }); */
+		return this.http.get<User>(AppSettings.App_URL + '/users/' + id);
 		//	 this._observable_User;
 	}
 	GetVideosBYiduser(id): Observable<videos[]> {
 		return this.GetVideos();
+	}
+
+	deletevideo(id) {
+		return this.http.delete<any>(AppSettings.App_URL + '/videos/' + id);
 	}
 	GetVideos(): Observable<videos[]> {
 		/* 		for (let index = 0; index < 10; index++) {

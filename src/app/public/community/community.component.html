@@ -12,20 +12,27 @@
 <div class="row" *ngIf="Communitys$ | async as infoCommunity; else loading">
   <a
     [routerLink]="'/community/profile/' + Community.id"
-    style="color: black"
+    style="color: black; text-align: center"
     *ngFor="let Community of infoCommunity"
     class="col col-lg-2"
   >
     <img
+      *ngIf="Community.urlphoto"
       [src]="Community.urlphoto"
       alt=""
       style="border-radius: 22px; border: 8px solid white; width: 89px"
     />
-
+    <img
+      *ngIf="!Community.urlphoto"
+      src="../../../../assets/img/default.jpg"
+      alt=""
+      style="border-radius: 57px; border: 8px solid white; width: 89px"
+    />
     <h5>
       {{ Community.name }}
     </h5>
-    <p>{{ Community.date }}</p>
+    <p *ngIf="Community.createdAt">{{ Community.createdAt }}</p>
+    <p *ngIf="!Community.createdAt">2020-01-30</p>
   </a>
 </div>
 <ng-template #loading> <loading></loading> </ng-template>

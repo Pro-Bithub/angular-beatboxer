@@ -76,11 +76,11 @@
         id="login"
         class="fadeIn second"
         placeholder="Mail"
-        formControlName="mail"
+        formControlName="email"
       />
-      <div *ngIf="submitted && f.mail.errors">
+      <div *ngIf="submitted && f.email.errors">
         <div
-          *ngIf="f.mail.errors.required"
+          *ngIf="f.email.errors.required"
           style="
             width: 100%;
             margin-top: 0.25rem;
@@ -88,7 +88,7 @@
             color: #dc3545;
           "
         >
-          mail (required)
+          email (required)
         </div>
       </div>
 
@@ -138,12 +138,12 @@
         type="text"
         id="password"
         class="fadeIn third"
-        formControlName="password"
+        formControlName="repassword"
         placeholder="confirm password"
       />
-      <div *ngIf="submitted && f.password.errors">
+      <div *ngIf="submitted && f.repassword.errors">
         <div
-          *ngIf="f.password.errors.required"
+          *ngIf="f.repassword.errors.required"
           style="
             width: 100%;
             margin-top: 0.25rem;
@@ -151,7 +151,7 @@
             color: #dc3545;
           "
         >
-          password (required)
+          confirm password (required)
         </div>
       </div>
 
@@ -161,3 +161,8 @@
     <!-- Remind Passowrd -->
   </div>
 </div>
+
+<notifyalsert
+  *ngIf="(notify | json) != '{}' && notify != null"
+  [notify]="notify"
+></notifyalsert>

@@ -1,0 +1,181 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">Editer profile</div>
+
+    <!-- Login Form -->
+    <form [formGroup]="addform" (ngSubmit)="onSubmit()">
+      <!--  <input
+        style="display: none"
+        type="file"
+        (change)="onFileChanged($event)"
+        #fileInput
+      />
+      <button
+        class="btn btn-primary"
+        style="background-color: #56baed !important"
+        (click)="fileInput.click()"
+      >
+        Select img or video
+      </button> -->
+
+      <input
+        type="text"
+        id="login"
+        class="fadeIn second"
+        placeholder="full name"
+        formControlName="name"
+      />
+      <div *ngIf="submitted && f.name.errors">
+        <div
+          *ngIf="f.name.errors.required"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          name (required)
+        </div>
+      </div>
+
+      <input
+        type="text"
+        id="login"
+        class="fadeIn second"
+        placeholder="email "
+        formControlName="email"
+      />
+      <div *ngIf="submitted && f.email.errors">
+        <div
+          *ngIf="f.email.errors.required"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          email (required)
+        </div>
+      </div>
+      <input
+        type="text"
+        id="login"
+        class="fadeIn second"
+        placeholder="username"
+        formControlName="username"
+      />
+      <div *ngIf="submitted && f.username.errors">
+        <div
+          *ngIf="f.username.errors.required"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          username (required)
+        </div>
+      </div>
+
+      <input
+        type="text"
+        id="login"
+        class="fadeIn second"
+        placeholder="password"
+        formControlName="password"
+      />
+      <div *ngIf="submitted && f.password.errors">
+        <div
+          *ngIf="f.password.errors.required"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          password (required)
+        </div>
+      </div>
+
+      <input
+        type="text"
+        id="login"
+        class="fadeIn second"
+        placeholder="phone"
+        formControlName="phone"
+      />
+      <div *ngIf="submitted && f.phone.errors">
+        <div
+          *ngIf="f.phone.errors.required"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          phone (required)
+        </div>
+      </div>
+
+      <input
+        type="text"
+        id="login"
+        class="fadeIn second"
+        placeholder="address"
+        formControlName="address"
+      />
+      <div *ngIf="submitted && f.address.errors">
+        <div
+          *ngIf="f.address.errors.required"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          address (required)
+        </div>
+      </div>
+
+      <textarea
+        class="form-control"
+        id="login"
+        placeholder="description"
+        formControlName="description"
+        style="text-align: center"
+        rows="5"
+      ></textarea>
+
+      <div *ngIf="submitted && f.description.errors">
+        <div
+          *ngIf="f.description.errors.required"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          description (required)
+        </div>
+      </div>
+
+      <input type="submit" class="fadeIn fourth" value="Editer profile" />
+    </form>
+
+    <!-- Remind Passowrd -->
+  </div>
+</div>
+<notifyalsert
+  *ngIf="(notify | json) != '{}' && notify != null"
+  [notify]="notify"
+></notifyalsert>
