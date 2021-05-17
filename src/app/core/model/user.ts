@@ -7,4 +7,7 @@ export class User extends Community {
 	address: string;
 	password: string;
 	username: string;
+	twitter: string;
+	instagram: string;
+	facebook: string;
 }

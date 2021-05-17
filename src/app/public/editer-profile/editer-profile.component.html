@@ -146,6 +146,70 @@
         </div>
       </div>
 
+
+      <input
+        type="text"
+        id="login"
+        class="fadeIn second"
+        placeholder="facebook"
+        formControlName="facebook"
+      />
+      <div *ngIf="submitted && f.facebook.errors">
+        <div
+          *ngIf="f.facebook.errors.required"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          facebook (required)
+        </div>
+      </div>
+      <input
+      type="text"
+      id="login"
+      class="fadeIn second"
+      placeholder="instagram"
+      formControlName="instagram"
+    />
+    <div *ngIf="submitted && f.instagram.errors">
+      <div
+        *ngIf="f.instagram.errors.required"
+        style="
+          width: 100%;
+          margin-top: 0.25rem;
+          font-size: 80%;
+          color: #dc3545;
+        "
+      >
+        instagram (required)
+      </div>
+    </div>
+
+    <input
+      type="text"
+      id="login"
+      class="fadeIn second"
+      placeholder="twitter"
+      formControlName="twitter"
+    />
+    <div *ngIf="submitted && f.twitter.errors">
+      <div
+        *ngIf="f.twitter.errors.required"
+        style="
+          width: 100%;
+          margin-top: 0.25rem;
+          font-size: 80%;
+          color: #dc3545;
+        "
+      >
+        twitter (required)
+      </div>
+    </div>
+
+    
       <textarea
         class="form-control"
         id="login"

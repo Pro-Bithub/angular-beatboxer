@@ -108,17 +108,38 @@
           <strong class="text-shadow d-none d-sm-block ms-1">Community</strong>
         </a>
       </li>
-      <li class="nav-item me-3 me-lg-1">
+      <!--    <div *ngIf="isLoggedIn$ | async as isLoggedIn">
+        isLoggedIn : {{ isLoggedIn }}
+      </div> -->
+
+      <li class="nav-item me-3 me-lg-1" *ngIf="!user">
         <a class="nav-link d-sm-flex align-items-sm-center" routerLink="/login">
           <strong class="text-shadow d-none d-sm-block ms-1">Login</strong>
         </a>
       </li>
-      <li class="nav-item me-3 me-lg-1">
+
+      <li class="nav-item me-3 me-lg-1" *ngIf="!user">
         <a
           class="nav-link d-sm-flex align-items-sm-center"
           routerLink="/register"
         >
           <strong class="text-shadow d-none d-sm-block ms-1">Register</strong>
+        </a>
+      </li>
+
+      <li class="nav-item me-3 me-lg-1" *ngIf="user">
+        <a class="nav-link d-sm-flex align-items-sm-center" (click)="logout()">
+          <strong class="text-shadow d-none d-sm-block ms-1">Logout</strong>
+        </a>
+      </li>
+      <li class="nav-item me-3 me-lg-1" *ngIf="user">
+        <a
+          class="nav-link d-sm-flex align-items-sm-center"
+          routerLink="/my-profile"
+        >
+          <strong class="text-shadow d-none d-sm-block ms-1">{{
+            user.name
+          }}</strong>
         </a>
       </li>
     </ul>

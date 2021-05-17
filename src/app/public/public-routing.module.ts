@@ -13,6 +13,7 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { AddVideoImgComponent } from './add-video-img/add-video-img.component';
 import { AuthGuard } from '../core/_helpers/auth.guard';
 import { EditerProfileComponent } from './editer-profile/editer-profile.component';
+import { NotAuth } from '../core/_helpers/not-auth.guard';
 
 const routes: Routes = [
 	{
@@ -40,8 +41,16 @@ const routes: Routes = [
 				component: EditerProfileComponent,
 				canActivate: [ AuthGuard ]
 			},
-			{ path: 'register', component: RegisterComponent },
-			{ path: 'login', component: LoginComponent }
+			{
+				path: 'register',
+				component: RegisterComponent,
+				canActivate: [ NotAuth ]
+			},
+			{
+				path: 'login',
+				component: LoginComponent,
+				canActivate: [ NotAuth ]
+			}
 		]
 	}
 ];

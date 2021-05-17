@@ -68,6 +68,15 @@ export class EditerProfileComponent implements OnInit {
 			if (this.User.description != null) {
 				this.addform.get('description').setValue(this.User.description);
 			}
+			if (this.User.twitter != null) {
+				this.addform.get('twitter').setValue(this.User.twitter);
+			}
+			if (this.User.instagram != null) {
+				this.addform.get('instagram').setValue(this.User.instagram);
+			}
+			if (this.User.facebook != null) {
+				this.addform.get('facebook').setValue(this.User.facebook);
+			}
 		}
 	}
 	ngOnInit() {
@@ -79,6 +88,9 @@ export class EditerProfileComponent implements OnInit {
 			password: [ , Validators.required ],
 			phone: [ , Validators.required ],
 			address: [ , Validators.required ],
+			twitter: [ , Validators.required ],
+			instagram: [ , Validators.required ],
+			facebook: [ , Validators.required ],
 			description: [ , Validators.required ]
 		});
 		this.get_user_from_session_storage();

@@ -103,6 +103,7 @@ export class LoginComponent implements OnInit {
 					this.loginForm.reset();
 					console.log('rep');
 					console.log(rep);
+
 					sessionStorage.setItem('auth-user', JSON.stringify(rep[0]));
 					this.router.navigate([ '/my-profile' ]);
 				} else {

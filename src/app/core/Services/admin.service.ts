@@ -3,18 +3,24 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { AppSettings } from '../settings/app.settings';
 
 import { Observable, BehaviorSubject, Subject, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { videos } from '../model/videos';
 import { Events } from '../model/events';
 import { Community } from '../model/community';
 import { User } from '../model/user';
+import { TokenStorageService } from './token-storage.service';
+import { Router } from '@angular/router';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class AdminService {
 	/* */
-	constructor(private http: HttpClient) {}
+	constructor(private router: Router, private http: HttpClient, private tokenStorageService: TokenStorageService) {
+		this.userSubject = new BehaviorSubject<User>(tokenStorageService.getUser());
+		this.user = this.userSubject.asObservable();
+	}
+
 	/**
    * Show a notification
    *
@@ -24,6 +30,19 @@ export class AdminService {
 	public showNotification(type: string, message: string): void {
 		/* this.notifierService.notify(type, message); */
 	}
+
+	private userSubject: BehaviorSubject<User>;
+	public user: Observable<User>;
+	public get userValue(): User {
+		return this.userSubject.value;
+	}
+	logout() {
+		// remove user from local storage and set current user to null
+		this.tokenStorageService.signOut(); // {4}
+		this.userSubject.next(null);
+		this.router.navigate([ '/login' ]);
+	}
+	///
 
 	private _list: videos[] = [];
 	private _observableList: BehaviorSubject<videos[]> = new BehaviorSubject([]);
@@ -272,13 +291,24 @@ export class AdminService {
 		};
 
 		/*     let EmprintAdmin = { 'fingerPrint': hashcode } */
-		return this.http.post<string>(AppSettings.App_URL + '/users', parm, {
-			headers: new HttpHeaders({
-				Authorization: '{data}',
-				'Content-Type': 'application/json'
-			}),
-			responseType: 'text' as 'json'
-		});
+		return this.http
+			.post<string>(AppSettings.App_URL + '/users', parm, {
+				headers: new HttpHeaders({
+					Authorization: '{data}',
+					'Content-Type': 'application/json'
+				}),
+				responseType: 'text' as 'json'
+			})
+			.pipe(
+				map((user) => {
+					// store user details and jwt token in local storage to keep user logged in between page refreshes
+
+					sessionStorage.setItem('auth-user', user);
+
+					this.userSubject.next(this.tokenStorageService.getUser());
+					return user;
+				})
+			);
 	}
 
 	findOneByUserNameAndpwd(data: any): Observable<string> {
@@ -288,7 +318,16 @@ export class AdminService {
 		};
 
 		/*     let EmprintAdmin = { 'fingerPrint': hashcode } */
-		return this.http.post<string>(AppSettings.App_URL + '/users/ByUserNameAndpwd', parm);
+		return this.http.post<string>(AppSettings.App_URL + '/users/ByUserNameAndpwd', parm).pipe(
+			map((user) => {
+				// store user details and jwt token in local storage to keep user logged in between page refreshes
+
+				sessionStorage.setItem('auth-user', JSON.stringify(user[0]));
+
+				this.userSubject.next(this.tokenStorageService.getUser());
+				return user;
+			})
+		);
 	}
 
 	editerprofile(data: any): Observable<string> {
@@ -299,7 +338,10 @@ export class AdminService {
 			password: data.password,
 			phone: data.phone,
 			address: data.address,
-			description: data.description
+			description: data.description,
+			twitter: data.twitter,
+			instagram: data.instagram,
+			facebook: data.facebook
 		};
 
 		/*     let EmprintAdmin = { 'fingerPrint': hashcode } */
