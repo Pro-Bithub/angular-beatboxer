@@ -33,6 +33,15 @@ export class TokenStorageService {
 			return JSON.parse(user);
 		}
 
-		return {};
+		return null;
+	}
+
+	public isLogin(): any {
+		const user = window.sessionStorage.getItem(USER_KEY);
+		if (user) {
+			return true;
+		}
+
+		return false;
 	}
 }

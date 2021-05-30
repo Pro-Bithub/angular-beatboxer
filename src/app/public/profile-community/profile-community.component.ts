@@ -3,7 +3,6 @@ import { Title } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { videos } from 'src/app/core/model/videos';
 import { AdminService } from 'src/app/core/Services';
-import { Community } from 'src/app/core/model/community';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/core/model/user';
 
@@ -23,9 +22,12 @@ export class ProfileCommunityComponent implements OnInit {
 	GetVideosBYiduser(id) {
 		this.videos$ = this.adminService.GetVideosBYiduser(id);
 	}
+	getf(Userinfo) {
+		console.log('Userinfo');
+		console.log(Userinfo);
+	}
 
 	GetUserBYid(id) {
-		console.log('GetUserBYid');
 		this.User$ = this.adminService.GetUserBYid(id);
 		/* 	this.User$.subscribe((rps) => {
 			console.log('rps');
@@ -34,7 +36,7 @@ export class ProfileCommunityComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.route.queryParams.subscribe((params) => {
+		this.route.params.subscribe((params) => {
 			this.id = params['id'];
 		});
 

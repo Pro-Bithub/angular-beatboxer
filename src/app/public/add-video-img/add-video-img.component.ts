@@ -6,6 +6,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subject, of } from 'rxjs';
 
 import { catchError } from 'rxjs/operators';
+import { Notify } from 'src/app/core/model/notify';
+import { AdminService } from 'src/app/core/Services';
 
 @Component({
 	selector: 'add-video-img',
@@ -19,7 +21,19 @@ export class AddVideoImgComponent implements OnInit {
 	submitted = false;
 	loadingError$ = new Subject<boolean>();
 	selectedFile: File;
-	constructor(private router: Router, private formBuilder: FormBuilder, private titleService: Title) {
+
+	notify: Notify = null;
+	private checkObs$: Observable<string>;
+
+	fileUploadForm: FormGroup;
+	fileInputLabel: string;
+
+	constructor(
+		private adminService: AdminService,
+		private router: Router,
+		private formBuilder: FormBuilder,
+		private titleService: Title
+	) {
 		this.titleService.setTitle('BeatBoxer - Add video or imge');
 	}
 
@@ -29,9 +43,32 @@ export class AddVideoImgComponent implements OnInit {
 
 	ngOnInit() {
 		this.addform = this.formBuilder.group({
+			url: [ , Validators.required ],
 			title: [ , Validators.required ],
-			desc: [ , Validators.required ]
+			desc: [ , Validators.required ],
+			type: [ , Validators.required ]
 		});
+
+		this.fileUploadForm = this.formBuilder.group({
+			uploadedImage: [ '' ]
+		});
+	}
+
+	onFileSelect(event) {
+		const file = event.target.files[0];
+		this.fileInputLabel = file.name;
+		this.fileUploadForm.get('uploadedImage').setValue(file);
+	}
+
+	onFormSubmit() {
+		if (!this.fileUploadForm.get('uploadedImage').value) {
+			alert('Please fill valid details!');
+			return false;
+		}
+
+		const formData = new FormData();
+		formData.append('uploadedImage', this.fileUploadForm.get('uploadedImage').value);
+		formData.append('agentId', '007');
 	}
 
 	onSubmit() {
@@ -48,7 +85,20 @@ export class AddVideoImgComponent implements OnInit {
   this.http.post('my-backend.com/file-upload', uploadData)
 	.subscribe(...); */
 
-		this.router.navigate([ '/my-profile' ]);
+		this.checkObs$ = this.adminService.addvideo(this.addform.value);
+		/*     this.notifierService.notify("success", "You are awesome! I mean it!"); */
+		this.checkObs$.subscribe(
+			(rep) => {
+				this.notify = { type: 'success', message: rep };
+				this.addform.reset();
+
+				this.router.navigate([ '/my-profile' ]);
+			},
+			(error) => {
+				console.log(error);
+				this.notify = { type: 'danger', message: error.error };
+			}
+		);
 	}
 	get f() {
 		return this.addform.controls;

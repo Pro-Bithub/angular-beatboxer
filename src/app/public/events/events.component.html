@@ -83,12 +83,12 @@
         <label for="inputAddress"> Event Name (required)</label>
         <input
           type="text"
-          formControlName="event"
+          formControlName="eventname"
           class="form-control"
           id="inputAddress"
         />
         <div
-          *ngIf="submitted && f.event.errors"
+          *ngIf="submitted && f.eventname.errors"
           style="
             width: 100%;
             margin-top: 0.25rem;
@@ -96,7 +96,7 @@
             color: #dc3545;
           "
         >
-          <div *ngIf="f.event.errors.required">event required</div>
+          <div *ngIf="f.eventname.errors.required">event name required</div>
         </div>
       </div>
 
@@ -179,8 +179,13 @@
     <button type="submit" class="btn btn-primary">Send</button>
   </form>
 </div>
-
+<!-- 
 <div *ngIf="checksendeventObs$ | async as infos; else loading2">
   {{ infos }}
 </div>
-<ng-template #loading2> <loading></loading> </ng-template>
+<ng-template #loading2> <loading></loading> </ng-template> -->
+
+<notifyalsert
+  *ngIf="(notify | json) != '{}' && notify != null"
+  [notify]="notify"
+></notifyalsert>
