@@ -330,6 +330,18 @@ export class AdminService {
 		);
 	}
 
+	editerprofileimg(addform: any, iduser: String): Observable<string> {
+		/*  {
+			headers: new HttpHeaders({
+				Authorization: '{data}',
+				'Content-Type': 'application/json'
+			}),
+			responseType: 'text' as 'json'
+		} */
+		/*     let EmprintAdmin = { 'fingerPrint': hashcode } */
+		return this.http.post<any>(AppSettings.App_URL + '/users/uploadphoto/' + iduser, addform);
+	}
+
 	editerprofile(data: any): Observable<string> {
 		let parm = {
 			email: data.email,
@@ -355,11 +367,13 @@ export class AdminService {
 	}
 
 	addvideo(data: any): Observable<string> {
+		const userfromUsersessionStorage = this.tokenStorageService.getUser();
 		let parm = {
 			url: data.url,
 			title: data.title,
 			desc: data.desc,
-			type: data.type
+			type: data.type,
+			iduser: userfromUsersessionStorage.id
 		};
 
 		/*     let EmprintAdmin = { 'fingerPrint': hashcode } */
@@ -382,7 +396,7 @@ export class AdminService {
 		//	 this._observable_User;
 	}
 	GetVideosBYiduser(id): Observable<videos[]> {
-		return this.GetVideos();
+		return this.http.get<any>(AppSettings.App_URL + '/videos/by/user/' + id);
 	}
 
 	deletevideo(id) {

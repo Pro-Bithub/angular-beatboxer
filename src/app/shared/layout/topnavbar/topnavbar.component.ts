@@ -24,7 +24,7 @@ export class TopnavbarComponent implements OnInit {
 	constructor(private adminService: AdminService) {}
 	get_user_from_session_storage() {
 		this.adminService.user.subscribe((x) => {
-			console.log('	this.adminService.user.subscribe called');
+			console.log('this.adminService.user.subscribe called');
 			this.user = x;
 		});
 	}

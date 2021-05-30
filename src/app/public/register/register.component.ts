@@ -64,7 +64,8 @@ export class RegisterComponent implements OnInit {
 			(rep) => {
 				this.notify = { type: 'success', message: rep };
 				this.loginForm.reset();
-
+				console.log('rep');
+				console.log(rep);
 				this.router.navigate([ '/my-profile' ]);
 			},
 			(error) => {

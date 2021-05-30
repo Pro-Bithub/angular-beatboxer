@@ -1,9 +1,50 @@
+<notifyalsert
+  *ngIf="(notify | json) != '{}' && notify != null"
+  [notify]="notify"
+></notifyalsert>
+
 <div class="wrapper fadeInDown">
   <div id="formContent">
     <!-- Tabs Titles -->
 
     <!-- Icon -->
     <div class="fadeIn first">Editer profile</div>
+
+    <div class="container">
+      <h3>Upload File</h3>
+
+      <form [formGroup]="fileUploadForm" (ngSubmit)="onFormSubmit()">
+        <div class="row">
+          <div class="col-sm-12">
+            <div>
+              <h6 class="head-title margin-top-8">
+                <span>Select Image File</span>
+              </h6>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="custom-file">
+              <input
+                type="file"
+                class="custom-file-input"
+                id="customFile"
+                name="uploadedImage"
+                (change)="onFileSelect($event)"
+                #UploadFileInput
+              />
+
+              <label class="custom-file-label" for="customFile">{{
+                fileInputLabel || "Choose File"
+              }}</label>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <button class="btn btn-primary" type="submit">Upload</button>
+          </div>
+        </div>
+      </form>
+    </div>
 
     <!-- Login Form -->
     <form [formGroup]="addform" (ngSubmit)="onSubmit()">
@@ -146,7 +187,6 @@
         </div>
       </div>
 
-
       <input
         type="text"
         id="login"
@@ -168,48 +208,47 @@
         </div>
       </div>
       <input
-      type="text"
-      id="login"
-      class="fadeIn second"
-      placeholder="instagram"
-      formControlName="instagram"
-    />
-    <div *ngIf="submitted && f.instagram.errors">
-      <div
-        *ngIf="f.instagram.errors.required"
-        style="
-          width: 100%;
-          margin-top: 0.25rem;
-          font-size: 80%;
-          color: #dc3545;
-        "
-      >
-        instagram (required)
+        type="text"
+        id="login"
+        class="fadeIn second"
+        placeholder="instagram"
+        formControlName="instagram"
+      />
+      <div *ngIf="submitted && f.instagram.errors">
+        <div
+          *ngIf="f.instagram.errors.required"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          instagram (required)
+        </div>
       </div>
-    </div>
 
-    <input
-      type="text"
-      id="login"
-      class="fadeIn second"
-      placeholder="twitter"
-      formControlName="twitter"
-    />
-    <div *ngIf="submitted && f.twitter.errors">
-      <div
-        *ngIf="f.twitter.errors.required"
-        style="
-          width: 100%;
-          margin-top: 0.25rem;
-          font-size: 80%;
-          color: #dc3545;
-        "
-      >
-        twitter (required)
+      <input
+        type="text"
+        id="login"
+        class="fadeIn second"
+        placeholder="twitter"
+        formControlName="twitter"
+      />
+      <div *ngIf="submitted && f.twitter.errors">
+        <div
+          *ngIf="f.twitter.errors.required"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          twitter (required)
+        </div>
       </div>
-    </div>
 
-    
       <textarea
         class="form-control"
         id="login"
@@ -239,7 +278,3 @@
     <!-- Remind Passowrd -->
   </div>
 </div>
-<notifyalsert
-  *ngIf="(notify | json) != '{}' && notify != null"
-  [notify]="notify"
-></notifyalsert>

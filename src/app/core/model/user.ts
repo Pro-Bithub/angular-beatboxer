@@ -10,4 +10,6 @@ export class User extends Community {
 	twitter: string;
 	instagram: string;
 	facebook: string;
+	photo: string;
+	id: string;
 }

@@ -26,6 +26,9 @@ export class EditerProfileComponent implements OnInit {
 	notify: Notify = null;
 	private checkObs$: Observable<string>;
 
+	fileUploadForm: FormGroup;
+	fileInputLabel: string;
+
 	constructor(
 		private tokenStorageService: TokenStorageService,
 		private adminService: AdminService,
@@ -34,6 +37,41 @@ export class EditerProfileComponent implements OnInit {
 		private titleService: Title
 	) {
 		this.titleService.setTitle('BeatBoxer - Add video or imge');
+	}
+
+	onFileSelect(event) {
+		const file = event.target.files[0];
+		this.fileInputLabel = file.name;
+		this.fileUploadForm.get('uploadedImage').setValue(file);
+	}
+
+	onFormSubmit() {
+		if (!this.fileUploadForm.get('uploadedImage').value) {
+			alert('Please fill valid details!');
+			return false;
+		}
+
+		const formData = new FormData();
+		formData.append('file', this.fileUploadForm.get('uploadedImage').value);
+		/* 	formData.append('agentId', '007'); */
+
+		this.adminService.editerprofileimg(formData, this.User.id).subscribe(
+			(res) => {
+				// Reset the file input
+				/*   this.uploadFileInput.nativeElement.value = ""; */
+				this.fileInputLabel = undefined;
+
+				this.notify = { type: 'success', message: 'changed photo profile successfully' };
+				/* this.addform.reset(); */
+				//JSON.stringify(rep[0])
+				this.router.navigate([ '/my-profile' ]);
+				sessionStorage.setItem('auth-user', JSON.stringify(res));
+			},
+			(error) => {
+				console.log(error);
+				this.notify = { type: 'danger', message: error.error };
+			}
+		);
 	}
 
 	onFileChanged(event) {
@@ -80,6 +118,10 @@ export class EditerProfileComponent implements OnInit {
 		}
 	}
 	ngOnInit() {
+		this.fileUploadForm = this.formBuilder.group({
+			uploadedImage: [ '' ]
+		});
+
 		this.addform = this.formBuilder.group({
 			id: [ , Validators.required ],
 			email: [ , Validators.required ],

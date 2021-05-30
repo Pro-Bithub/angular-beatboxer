@@ -1,6 +1,7 @@
 export class Community {
-  id: string;
-  urlphoto: string;
-  name: string;
-  createdAt: string;
+	id: string;
+	urlphoto: string;
+	name: string;
+	createdAt: string;
+	photo: string;
 }

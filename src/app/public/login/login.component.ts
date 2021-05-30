@@ -103,9 +103,15 @@ export class LoginComponent implements OnInit {
 					this.loginForm.reset();
 					console.log('rep');
 					console.log(rep);
-
+					/*  */
+					if (rep[0]['username'] != undefined && rep[0]['username'] != null) {
+						if (rep[0]['username'] == 'admin') {
+							this.router.navigate([ '/dashbord' ]);
+						} else {
+							this.router.navigate([ '/my-profile' ]);
+						}
+					}
 					sessionStorage.setItem('auth-user', JSON.stringify(rep[0]));
-					this.router.navigate([ '/my-profile' ]);
 				} else {
 					this.notify = { type: 'danger', message: 'username or password incorrect !' };
 				}
