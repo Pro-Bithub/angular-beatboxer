@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col col-lg-3" style="float: right">
+    <a [routerLink]="'/admin/events/add'" class="btn btn-primary btn-sm px-3">
+      Add new Event
+    </a>
+  </div>
+  <div
+    class="col col-lg-12"
+    *ngIf="Events$ | async as infoEvents; else loading"
+  >
+    <table class="table align-middle">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">title</th>
+          <th scope="col">desc</th>
+          <th scope="col">createdby</th>
+          <th scope="col">action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let event of infoEvents">
+          <th scope="row">{{ event.id }}</th>
+          <td>{{ event.title }}</td>
+          <td>{{ event.desc }}</td>
+          <td>
+            <span class="badge">{{ event.createdby }}</span>
+          </td>
+          <td>
+            <a
+              [routerLink]="'/admin/event/' + event.id"
+              class="btn btn-sm px-3"
+            >
+              Editer
+            </a>
+            <button
+              type="button"
+              (click)="Deleteeventbyid(event.id)"
+              class="btn btn-danger btn-sm px-3"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #loading> <loading></loading> </ng-template>
+</div>

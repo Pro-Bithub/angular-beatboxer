@@ -1,0 +1,70 @@
+<div class="container-fluid" style="background: #e8e8e8ad">
+  <div class="row">
+    <div
+      class="col-md-2 col-sm-4 sidebar1"
+      style="
+        min-height: 700px;
+        min-height: 700px;
+        background-position: right, left;
+        background-size: cover;
+      "
+    >
+      <div class="0logo">
+        <img
+          src="../../../../assets/img/b3.png"
+          class=""
+          alt="0Logo"
+          style="padding: 12px 80px"
+        />
+      </div>
+      <br />
+      <div class="left-navigation">
+        <ul class="list">
+          <h5><strong>USERS</strong></h5>
+          <li><a routerLink="/admin/users"> All Users </a></li>
+          <li><a routerLink="/admin/users/add"> Add User</a></li>
+        </ul>
+
+        <br />
+
+        <ul class="list">
+          <h5><strong>EVENTS</strong></h5>
+          <li><a routerLink="/admin/events"> All Events </a></li>
+          <li><a routerLink="/admin/events/add"> Add Event</a></li>
+        </ul>
+        <ul class="list">
+          <h5><strong>EVENTS REQUEST </strong></h5>
+          <li><a routerLink="/admin/events-request"> All Events request</a></li>
+        </ul>
+        <ul class="list">
+          <h5><strong>VIDEOS </strong></h5>
+          <li><a routerLink="/admin/videos"> All Videos</a></li>
+          <li><a routerLink="/admin/videos/add"> Add videos</a></li>
+        </ul>
+
+        <ul class="list">
+          <h5><strong>VIDEOS Learn</strong></h5>
+          <li><a routerLink="/admin/videos-Learn/"> All Videos Learn</a></li>
+          <li><a routerLink="/admin/videos-Learn/add"> Add videos Learn</a></li>
+        </ul>
+
+        <ul class="list">
+          <h5>
+            <!--   <img
+              src="../../../../assets/img/logout.png"
+              class=""
+              alt="0Logo"
+              style="padding: 12px 80px"
+            /> -->
+            <a (click)="logout()" style="text-decoration: double"> LOGOUT</a>
+          </h5>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-10 col-sm-8 main-content">
+      <!--Main content code to be written here -->
+      <h1>BEATBOX - Dashbord admin</h1>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col col-lg-3" style="float: right">
+    <a
+      [routerLink]="'/admin/videos-Learn/add'"
+      class="btn btn-primary btn-sm px-3"
+    >
+      Add new video learn
+    </a>
+  </div>
+  <div
+    class="col col-lg-12"
+    *ngIf="videos$ | async as infovideos; else loading"
+  >
+    <table class="table align-middle">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">url</th>
+          <th scope="col">title</th>
+          <th scope="col">desc</th>
+          <th scope="col">action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let event of infovideos">
+          <th scope="row">{{ event.id }}</th>
+          <td>{{ event.url }}</td>
+          <td>{{ event.desc }}</td>
+
+          <td>
+            <!--  <a
+              [routerLink]="'/admin/event/' + event.id"
+              class="btn btn-sm px-3"
+            >
+              Editer
+            </a>
+            <button
+              type="button"
+              (click)="Deleteeventbyid(event.id)"
+              class="btn btn-danger btn-sm px-3"
+            >
+              Delete
+            </button> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #loading> <loading></loading> </ng-template>
+</div>

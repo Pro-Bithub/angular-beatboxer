@@ -1,0 +1,152 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">Add video or imge</div>
+    <!-- <div class="container">
+      <h3>Upload File</h3>
+
+      <form [formGroup]="fileUploadForm" (ngSubmit)="onFormSubmit()">
+        <div class="row">
+          <div class="col-sm-12">
+            <div>
+              <h6 class="head-title margin-top-8">
+                <span>Select Image File</span>
+              </h6>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="custom-file">
+              <input
+                type="file"
+                class="custom-file-input"
+                id="customFile"
+                name="uploadedImage"
+                (change)="onFileSelect($event)"
+                #UploadFileInput
+              />
+
+              <label class="custom-file-label" for="customFile">{{
+                fileInputLabel || "Choose File"
+              }}</label>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <button class="btn btn-primary" type="submit">Upload</button>
+          </div>
+        </div>
+      </form>
+    </div> -->
+
+    <!-- Login Form -->
+    <form [formGroup]="addform" (ngSubmit)="onSubmit()">
+      <!--  <input
+        style="display: none"
+        type="file"
+        (change)="onFileChanged($event)"
+        #fileInput
+      />
+      <button
+        class="btn btn-primary"
+        style="background-color: #56baed !important"
+        (click)="fileInput.click()"
+      >
+        Select img or video
+      </button> -->
+      https://www.youtube.com/watch?v=
+      <input
+        type="text"
+        id="login"
+        class="fadeIn second"
+        placeholder="url video youtube"
+        formControlName="url"
+      />
+      <div *ngIf="submitted && f.url.errors">
+        <div
+          *ngIf="f.url.errors.required"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          url video (required)
+        </div>
+      </div>
+
+      <input
+        type="text"
+        id="login"
+        class="fadeIn second"
+        placeholder="title video"
+        formControlName="title"
+      />
+      <div *ngIf="submitted && f.title.errors">
+        <div
+          *ngIf="f.title.errors.required"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          title (required)
+        </div>
+      </div>
+      <input
+        type="text"
+        id="login"
+        class="fadeIn second"
+        placeholder="type video"
+        formControlName="type"
+      />
+      <div *ngIf="submitted && f.type.errors">
+        <div
+          *ngIf="f.type.errors.required"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          type (required)
+        </div>
+      </div>
+      <textarea
+        class="form-control"
+        id="login"
+        placeholder="description"
+        formControlName="desc"
+        style="text-align: center"
+        rows="5"
+      ></textarea>
+
+      <div *ngIf="submitted && f.desc.errors">
+        <div
+          *ngIf="f.desc.errors.required"
+          style="
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+          "
+        >
+          desc (required)
+        </div>
+      </div>
+
+      <input type="submit" class="fadeIn fourth" value="Add video or imge" />
+    </form>
+
+    <!-- Remind Passowrd -->
+  </div>
+</div>
+<notifyalsert
+  *ngIf="(notify | json) != '{}' && notify != null"
+  [notify]="notify"
+></notifyalsert>
