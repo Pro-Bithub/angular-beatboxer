@@ -1,3 +1,5 @@
 export class Events {
-	title: string;
+  title: string;
+  id: string;
+  desc: string;
 }

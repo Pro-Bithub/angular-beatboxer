@@ -1,0 +1,57 @@
+<div class="row">
+  <div
+    class="col col-lg-12"
+    *ngIf="Events$ | async as infoEvents; else loading"
+  >
+    <table class="table align-middle">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">email</th>
+          <th scope="col">eventname</th>
+          <th scope="col">date</th>
+          <th scope="col">response</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let event of infoEvents">
+          <th scope="row">{{ event.id }}</th>
+          <td>{{ event.email }}</td>
+          <td>{{ event.eventname }}</td>
+          <td>{{ event.date | date: "dd/MM/y" || "2020-01-30" }}</td>
+          <td>
+            <span
+              class="badge"
+              [ngClass]="{
+                'badge-success': event.response === 'accepted',
+                'badge-danger': event.response === 'rejected',
+                'badge-warning': event.response === 'rejected'
+              }"
+              >{{ event.response }}</span
+            >
+          </td>
+
+          <td
+            *ngIf="event.response != 'accepted' && event.response != 'rejected'"
+          >
+            <button
+              (click)="reqevent('accepted', event.id)"
+              class="btn btn-sm px-3 btn-success"
+            >
+              Accept
+            </button>
+            <button
+              type="button"
+              (click)="reqevent('rejected', event.id)"
+              class="btn btn-danger btn-sm px-3"
+            >
+              Reject
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #loading> <loading></loading> </ng-template>
+</div>

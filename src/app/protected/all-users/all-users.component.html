@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col col-lg-3" style="float: right">
+    <a [routerLink]="'/admin/users/add'" class="btn btn-primary btn-sm px-3">
+      Add new User
+    </a>
+  </div>
+  <div class="col col-lg-12" *ngIf="Users$ | async as infoUsers; else loading">
+    <table class="table align-middle">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">email</th>
+          <th scope="col">username</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let User of infoUsers">
+          <th scope="row">{{ User.id }}</th>
+          <td>{{ User.email }}</td>
+          <td>{{ User.username }}</td>
+          <td>
+            <a [routerLink]="'/admin/user/' + User.id" class="btn btn-sm px-3">
+              Editer
+            </a>
+            <button
+              type="button"
+              (click)="Deleteuserbyid(User.id)"
+              class="btn btn-danger btn-sm px-3"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #loading> <loading></loading> </ng-template>
+</div>

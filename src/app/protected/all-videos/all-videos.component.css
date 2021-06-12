@@ -1,0 +1,14 @@
+.breadcrumb{background-color: #ffffff; }
+
+#foo {
+    color: #000; /* Fallback for older browsers */
+    color: rgba(0, 0, 0, 0.5);
+
+    font-size: 10pt;
+    font-family: Arial, sans-serif;
+}
+
+#all{
+
+    margin-top: 5%;
+}
